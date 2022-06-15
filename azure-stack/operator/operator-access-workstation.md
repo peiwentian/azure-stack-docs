@@ -68,7 +68,7 @@ param(
     [string] 
     $DownloadedOAWZipFilePath 
 ) 
-$expectedHash = '2F6242F122532E176A5FACD694C132D3DAFD50D0F17F5F23F26A8102C7BA6157' 
+$expectedHash = '533AD2579539E34FC8B15388569AC8377A1BFE4F2816495ABAAED2206D4103B6' 
 $actualHash = (Get-FileHash -Path $DownloadedOAWZipFilePath).Hash 
 Write-Host "Expected hash: $expectedHash" 
 if ($expectedHash -eq $actualHash) 
@@ -92,7 +92,7 @@ Another way to copy this script to your environment is to use the Test-FileHash 
 2. After you import the Test-FileHash module, verify the hash of the OAW.zip file:
  
    ```powershell
-   Test-FileHash -ExpectedHash "2F6242F122532E176A5FACD694C132D3DAFD50D0F17F5F23F26A8102C7BA6157" -FilePath "<path to the OAW.zip file>"
+   Test-FileHash -ExpectedHash "533AD2579539E34FC8B15388569AC8377A1BFE4F2816495ABAAED2206D4103B6" -FilePath "<path to the OAW.zip file>"
    ```
 
 ## Check HLH version
@@ -212,6 +212,7 @@ New-OAW
 [-PhysicalAdapterMACAddress <String>] ` 
 [-VirtualSwitchName <String>] ` 
 [-ReCreate] ` 
+[-DisableTelemetry] `
 [-AsJob] ` 
 [-Passthru] ` 
 [-WhatIf] ` 
@@ -240,6 +241,7 @@ New-OAW
 [-PhysicalAdapterMACAddress <String>] ` 
 [-VirtualSwitchName <String>] ` 
 [-ReCreate] ` 
+[-DisableTelemetry] `
 [-AsJob] ` 
 [-Passthru] ` 
 [-WhatIf] ` 
@@ -272,6 +274,7 @@ The following table lists the definition for each parameter.
 | PhysicalAdapterMACAddress  | Optional              | The MAC address of the host's network adapter that will be used to connect the virtual machine to.<br>- If there's only one physical network adapter, this parameter isn't needed and the only network adapter will be used.<br>- If there's more than one physical network adapter, this parameter is required to specify which one to use. |
 | VirtualSwitchName          | Optional              | The name of virtual switch that needs to be configured in Hyper-V for the virtual machine.<br>- If there's VMSwitch with the provided name, such VMSwitch will be selected.<br>- If there's no VMSwitch with the provided name, a VMSwitch will be created with the provided name.                                                            |
 | Re-Create                   | Optional              | Removes and re-creates the virtual machine if there's already an existed virtual machine with the same name.                                                                                                                                                                                                                                       |
+| DisableTelemetry                   | Optional              | To disable the Telemetry while creating the OAW vm, by default the Telemetry is enabled.                                                                                                                                                                                                                                                      |
 
 ## Check the OAW VM version
 
